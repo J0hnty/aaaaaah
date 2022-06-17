@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PizzaController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ 'C:/Users/Johnty van Delden/Documents/GitHub/symfony/eindoefentoets/src/Controller/PizzaController.php'|file_link(0) }}">src/Controller/PizzaController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'C:/Users/Johnty van Delden/Documents/GitHub/symfony/eindoefentoets/templates/pizza/index.html.twig'|file_link(0) }}">templates/pizza/index.html.twig</a></code></li>
+    </ul>
+
+    {% for klant in klanten %}
+
+        <p> {{ klant.name }} </p>
+        {% for bestelling in klant.bestellings %}
+            <p>Bestelling {{ bestelling.date | date('d-m-Y') }} </p>
+            {% for bestelregel in bestelling.bestelregels %}
+                <p> {{ bestelregel.pizza.name }} (x{{ bestelregel.amount }}) </p>
+            {% endfor %}
+        {% endfor %}
+    {% endfor %}
+
+
+
+</div>
+{% endblock %}
